@@ -10,6 +10,7 @@ public class Calculator extends JFrame{
     private JTextField tfNumber2;
     private JButton btnCompute;
     private JPanel pMain;
+    private JLabel lblResult;
 
 
     Calculator(){
@@ -18,9 +19,47 @@ public class Calculator extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 int a = Integer.parseInt(tfNumber1.getText().trim());
                 int b = Integer.parseInt(tfNumber2.getText().trim());
+                int result = operate(a, b);
+                lblResult.setText(String.valueOf(result));
             }
         });
     }
+
+    public int operate(int a, int b){
+        int res = 0;
+        switch(cbOperations.getSelectedItem().toString()){
+            case "+":
+                res = a + b;
+                break;
+            case "-":
+                res = b - a;
+                break;
+            case "*":
+                res = a * b;
+                break;
+            case "/":
+                try{
+                    if(b == 0){
+                        throw new ArithmeticException("Division by zero");
+
+                    }
+                    res = a / b;
+                } catch(ArithmeticException e){
+                    System.out.println(e.getMessage());
+                    JOptionPane.showMessageDialog(null, "Division by zero!");
+                    tfNumber1.setText("");
+                    tfNumber2.setText("");
+                }
+                break;
+            default:
+                System.out.println("Invalid");
+        }
+        return res;
+    }
+
+
+
+
 
 
 
