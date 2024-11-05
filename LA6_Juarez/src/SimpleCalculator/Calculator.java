@@ -70,5 +70,6 @@ public class Calculator extends JFrame{
         app.setSize(800,250);
         app.setDefaultCloseOperation(EXIT_ON_CLOSE);
         app.setVisible(true);
+        app.setTitle("Simple Calculator");
     }
 }
