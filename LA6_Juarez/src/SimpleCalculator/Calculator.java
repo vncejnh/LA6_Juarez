@@ -58,12 +58,6 @@ public class Calculator extends JFrame{
     }
 
 
-
-
-
-
-
-
     public static void main(String[] args) {
         Calculator app = new Calculator();
         app.setContentPane(app.pMain);
